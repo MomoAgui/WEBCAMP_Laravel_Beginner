@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang='ja'>
+<html lang="ja">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,inittial-scale=1">
-        <title>ログイン機能付きタスク管理サービス@yield('title')</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>formテスト</title>
     </head>
     <body>
-        @yield('contents')
-
+@yield('contets')
     </body>
 </html>

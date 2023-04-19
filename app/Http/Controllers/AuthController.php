@@ -7,12 +7,11 @@ use App\Http\Requests\LoginPostRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-
 class AuthController extends Controller
 {
     /**
      * トップページ を表示する
-     *
+     * 
      * @return \Illuminate\View\View
      */
     public function index()
@@ -22,7 +21,7 @@ class AuthController extends Controller
 
     /**
      * ログイン処理
-     *
+     * 
      */
     public function login(LoginPostRequest $request)
     {
@@ -43,11 +42,10 @@ class AuthController extends Controller
         //
         $request->session()->regenerate();
         return redirect()->intended('/task/list');
-
     }
-    /**
+      /**
      * ログアウト処理
-     *
+     * 
      */
     public function logout(Request $request)
     {
@@ -57,7 +55,3 @@ class AuthController extends Controller
         return redirect(route('front.index'));
     }
 }
-
-
-
-
