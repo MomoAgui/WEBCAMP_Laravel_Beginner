@@ -65,8 +65,8 @@
         </table>
         <!-- ページネーション -->
         現在 1 ページ目<br>
-        <a href="./top.html">最初のページ(未実装)</a> / 
-        <a href="./top.html">前に戻る(未実装)</a> / 
+        <a href="./top.html">最初のページ(未実装)</a> /
+        <a href="./top.html">前に戻る(未実装)</a> /
         <a href="./top.html">次に進む(未実装)</a>
         <br>
         <hr>

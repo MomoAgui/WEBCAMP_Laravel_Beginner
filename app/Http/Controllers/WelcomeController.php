@@ -1,13 +1,37 @@
 <?php
 declare(strict_types=1);
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 
-class WelcomeController extends Controller{
-    public function index(){
+class WelcomeController extends Controller
+{
+    /**
+     * トップページ を表示する
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index()
+    {
         return view('welcome');
     }
-    public function second(){
+
+/**
+     * 2ndページ を表示する
+     *
+     * @return \Illuminate\View\View
+     */
+    public function second()
+    {
         return view('welcome_second');
+    }
+    /**
+     * 3ndページ を表示する
+     *
+     * @return \Illuminate\View\View
+     */
+    public function sss()
+    {
+        return view('welcome_sss');
     }
 }

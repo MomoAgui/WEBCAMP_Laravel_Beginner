@@ -1,19 +1,16 @@
-@extends('test.layout')
-
-{{-- メインコンテンツ --}}
-@section('contets')
-
-        @if ($errors->any())
-            <div>
-            @foreach ($errors->all() as $error)
-                {{ $error }}<br>
-            @endforeach
-            </div>
-        @endif
-        <form action="/test/input" method="post">
-            @csrf
-            email：<input name="email" value="{{ old('email') }}"><br>
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ログイン機能付きタスク管理サービス</title>
+    </head>
+    <body>
+        <h1>ログイン</h1>
+        <form action="/login" method="post">
+            email：<input name="email"><br>
             パスワード：<input  name="password" type="password"><br>
-            <button>送信する</button>
+            <button>ログインする</button>
         </form>
-@endsection
+    </body>
+</html>
