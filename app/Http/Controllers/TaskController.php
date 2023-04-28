@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Task as TaskModel;
 use Illuminate\Support\Facades\DB;
 use App\Models\CompletedTask as CompletedTaskModel;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 use Illuminate\Http\Request;
 
@@ -212,7 +213,7 @@ class TaskController extends Controller
         // 一覧に遷移する
         return redirect('/task/list');
     }
-      /**
+   /**
      * CSV ダウンロード
      */
     public function csvDownload()
@@ -234,7 +235,7 @@ class TaskController extends Controller
         // バッファリングを開始
         ob_start();
 
-         // 出力用のファイルハンドルを作成する
+       // 出力用のファイルハンドルを作成する
         $file = new \SplFileObject('php://output', 'w');
         // ヘッダを書き込む
         $file->fputcsv(array_values($data_list));
@@ -258,12 +259,11 @@ class TaskController extends Controller
 
         // 文字コードを変換する
         $csv_string_sjis = mb_convert_encoding($csv_string, 'SJIS', 'UTF-8');
-
-    // ダウンロードファイル名の作成
+ // ダウンロードファイル名の作成
         $download_filename = 'task_list.' . date('Ymd') . '.csv';
         // CSVを出力する
         return response($csv_string_sjis)
                 ->header('Content-Type', 'text/csv')
                 ->header('Content-Disposition', 'attachment; filename="' . $download_filename . '"');
-}
+    }
 }
