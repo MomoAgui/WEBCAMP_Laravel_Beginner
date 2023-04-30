@@ -12,14 +12,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-   public function list()
+     public function list()
     {
-        // データの取得
-        $list = UserModel::get();
-echo "<pre>\n";
-var_dump($list->toArray()); exit;
+        $group_by_column = ['users.id', 'users.name'];
+        $list = UserModel::select($group_by_column)
+                         ->selectRaw('count(tasks.id) AS task_num')
+                         ->leftJoin('tasks', 'users.id', '=', 'tasks.user_id')
+                         ->groupBy($group_by_column)
+                         ->orderBy('users.id')
+                         ->get();
 
-    //return view('admin.user.list');
+        return view('admin.user.list', ['users' => $list]);
     }
-
 }
