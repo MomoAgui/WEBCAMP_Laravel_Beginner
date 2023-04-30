@@ -1,7 +1,12 @@
 @extends('admin.layout')
 
+
+@auth('admin')
+@endauth
+
 {{-- メインコンテンツ --}}
 @section('contets')
+
 
 
         <h1>管理画面</h1>

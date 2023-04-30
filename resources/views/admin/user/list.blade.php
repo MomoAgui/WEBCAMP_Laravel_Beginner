@@ -1,5 +1,8 @@
 @extends('admin.layout')
 
+@auth('admin')
+@endauth
+
 {{-- メインコンテンツ --}}
 @section('contets')
 
