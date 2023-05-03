@@ -15,10 +15,10 @@ class CompletedTaskController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function list($task_id)
+    public function list()
     {
         $list=CompletedTaskModel::get();  //完了したテーブル全レコードを取得
-        return view('task.Completed_list',['list'=>$list],$task_id);
+        return view('task.Completed_list',['list'=>$list]);
     }
     /**
      * 「単一のタスク」Modelの取得
