@@ -10,15 +10,26 @@ use App\Models\CompletedTask as CompletedTaskModel;
 
 class CompletedTaskController extends Controller
 {
+
     /**
      * 完了タスク一覧 を表示する
      *
      * @return \Illuminate\View\View
      */
-    public function list()
+    public function list()      /** $task_idの時のみ引数()に入れる**/
+
     {
-        $list=CompletedTaskModel::get();  //完了したテーブル全レコードを取得
-        return view('task.Completed_list',['list'=>$list]);
+        $list=CompletedTaskModel::get();  /**完了したテーブル全レコードを取得**/
+
+        // 1Page辺りの表示アイテム数を設定
+        $per_page = 3;
+
+        // 一覧の取得
+        $paginator =$this->paginate($per_page);
+
+
+        return view('task.Completed_list',['completed_tasks'=>$list]);  /**Complted_tasksの情報をlistに渡す**/
+
     }
     /**
      * 「単一のタスク」Modelの取得
@@ -52,6 +63,7 @@ class CompletedTaskController extends Controller
         // テンプレートに「取得したレコード」の情報を渡す
         return view($template_name, ['completed_tasks' => $task]);
     }
+
 
 
     /**

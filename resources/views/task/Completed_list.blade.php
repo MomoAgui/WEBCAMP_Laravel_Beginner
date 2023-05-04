@@ -20,6 +20,9 @@
 @endforeach
 
         </table>
+        <!-- ページネーション -->
+        {{-- {{ $paginator->links() }} --}}
+       現在{{ $paginator->currentPage() }}ページ目<br>
 
 
         <hr>
