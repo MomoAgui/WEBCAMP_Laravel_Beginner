@@ -25,7 +25,7 @@ class CompletedTaskController extends Controller
         $per_page = 3;
 
         // 一覧の取得
-        $paginator =$this->paginate($per_page);
+        $list =CompletedTaskModel::where('user_id',Auth::id())->paginate($per_page);
 
 
         return view('task.Completed_list',['completed_tasks'=>$list]);  /**Complted_tasksの情報をlistに渡す**/
