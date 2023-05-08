@@ -31,7 +31,7 @@ class AuthController extends Controller
         $datum = $request->validated();
         //var_dump($datum); exit;
 
-        // 認証
+         // 認証
         if (Auth::attempt($datum) === false) {
             return back()
                    ->withInput() // 入力値の保持
@@ -42,7 +42,7 @@ class AuthController extends Controller
         //
         $request->session()->regenerate();
         return redirect()->intended('/task/list');
-    }
+}
     /**
      * ログアウト処理
      *
