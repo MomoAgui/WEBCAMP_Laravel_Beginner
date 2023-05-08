@@ -17,7 +17,7 @@ class FrontAuthUser extends Seeder
     {
         //
         DB::table('users')->insert([
-            'name' => 'テストユーザ',
+            'name' => 'テストユーザー',
             'email' => 'hoge@example.com',
             'email_verified_at' => date('Y-m-d H:i:s'),
             'password' => Hash::make('pass'),

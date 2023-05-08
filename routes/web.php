@@ -25,7 +25,7 @@ use App\Http\Controllers\UserController;
 // タスク管理システム
 Route::get('/', [AuthController::class, 'index'])->name('front.index');
 Route::get('/user/register',[UserController::class,'index']);
-Route::post('/user/input',[UserRegisterPost::class,'register']);
+Route::post('/user/input',[UserController::class,'register']);
 Route::post('/login', [AuthController::class, 'login']);
 // 認可処理
 Route::middleware(['auth'])->group(function () {
