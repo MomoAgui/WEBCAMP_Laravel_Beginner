@@ -37,13 +37,7 @@ class UserController extends Controller
 
         return view('user./input',['datum'=>$datum]);
 
-        // 認証
-        if (Auth::attempt($datum) === false) {
-            return back()
-                   ->withInput() // 入力値の保持
-                   ->withErrors(['auth' => 'emailかパスワードに誤りがあります。',]) // エラーメッセージの出力
-                   ;
-        }
+
 
         //
         $request->session()->regenerate();
