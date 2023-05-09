@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class UserRegisterPost extends FormRequest
 {
 
@@ -17,7 +18,7 @@ class UserRegisterPost extends FormRequest
     public function rules()
     {
         return [
-            'name'=>['required','name','max:128'],
+            'name'=>['required','max:128'],
             'email'=>['required','email','max:254'],
             'password'=>['required','max:72'],
         ];

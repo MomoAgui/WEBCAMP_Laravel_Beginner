@@ -34,16 +34,6 @@ class UserController extends Controller
 
         $datum=$request->validated();
 
- $datum['password'] = Hash::make($datum['password']);
-
-        // 認証
-        if (Auth::attempt($datum) === false) {
-            return back()
-                   ->withInput() // 入力値の保持
-                   ->withErrors(['auth' => 'emailかパスワードに誤りがあります。',]) // エラーメッセージの出力
-                   ;
-        }
-
         return view('user./input',['datum'=>$datum]);
 
 
@@ -57,9 +47,11 @@ class UserController extends Controller
         }
 
         // ユーザー登録成功
-        $request->session()->flash('front.user_register_success', true);
+        $request->session()->flash('user_register_success', true);
 
         //
         return redirect('/');
+
     }
+
 }

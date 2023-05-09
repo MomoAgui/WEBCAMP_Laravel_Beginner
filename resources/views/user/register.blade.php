@@ -16,7 +16,7 @@
             @csrf
         名前：<input name="name"><br>
         email:<input name="email" type="email"><br>
-        パスワード：<input name="pass" type="password" ><br>
+        パスワード：<input name="password" type="password" ><br>
         <button>登録する</button><br>
         </form>
 @endsection
