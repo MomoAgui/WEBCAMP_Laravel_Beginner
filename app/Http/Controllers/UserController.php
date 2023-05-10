@@ -3,12 +3,11 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRegisterPost;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use Illuminate\Http\Facades\Hash;
-use App\Model\User as UserModel;
-
+use App\Http\Requests\UserRegisterPost;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use App\Models\User as UserModel;
 
 class UserController extends Controller
 {
@@ -34,23 +33,20 @@ class UserController extends Controller
 
         $datum=$request->validated();
 
-        return view('user./input',['datum'=>$datum]);
+        // テーブルにINSERT
 
+             DB::table('users')->insert([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'email_verified_at' => date('Y-m-d H:i:s'),
+            $datum['password']=>Hash::make($datum['password'])
+        ])->save();
 
-
-      //usersテーブルへINSERT
-        try {
-            $r = UserModel::create($datum);
-        } catch(\Throwable $e) {
-            echo $e->getMessage();
-            exit;
-        }
 
         // ユーザー登録成功
-        $request->session()->flash('user_register_success', true);
+        $request->session()->flash('front.user_register_success', true);
 
-        //
-        return redirect('/');
+          return redirect('views./index');
 
     }
 

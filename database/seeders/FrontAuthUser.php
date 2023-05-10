@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\UserRegisterPost;
 
 class FrontAuthUser extends Seeder
 {
@@ -14,14 +13,15 @@ class FrontAuthUser extends Seeder
      *
      * @return void
      */
-    public function run(UserRegisterPost $request)
+    public function run()
     {
         //
         DB::table('users')->insert([
-            'name' => '$datum',
-            'email' => '$datum',
+            'name' => 'テストユーザー',
+            'email' => 'hoge@example.com',
             'email_verified_at' => date('Y-m-d H:i:s'),
-            $datum['password']=>Hash::make($datum['password'])
+            'password'=>Hash::make('pass'),
         ]);
+
     }
 }
