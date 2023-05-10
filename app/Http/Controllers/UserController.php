@@ -35,18 +35,20 @@ class UserController extends Controller
 
         // テーブルにINSERT
 
-             DB::table('users')->insert([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'email_verified_at' => date('Y-m-d H:i:s'),
-            $datum['password']=>Hash::make($datum['password'])
-        ])->save();
+           $datum['password'] = Hash::make($datum['password']);
+
+           try{
+               UserModel::create($datum);
+           }catch(\Throwable $e){
+               echo $e->getMessage();
+               exit;
+           }
 
 
         // ユーザー登録成功
         $request->session()->flash('front.user_register_success', true);
 
-          return redirect('views./index');
+          return redirect('/');
 
     }
 
