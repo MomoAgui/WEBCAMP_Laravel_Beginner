@@ -30,7 +30,7 @@
         @endif
         /
         @if ($completed_tasks->previousPageUrl() !== null)
-            <a href="{{ $list->previousPageUrl() }}">前に戻る</a>
+            <a href="{{ $completed_tasks->previousPageUrl() }}">前に戻る</a>
         @else
             前に戻る
         @endif
