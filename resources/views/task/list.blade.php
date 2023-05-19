@@ -44,6 +44,7 @@
             <th>タスク名
             <th>期限
             <th>重要度
+
 @foreach ($list as $task)
         <tr>
             <td>{{ $task->name }}
@@ -55,8 +56,7 @@
             @csrf
             <button onclick='return confirm("このタスクを「完了」にします。よろしいですか？");' >
         完了</button></form>
-@endforeach
-        </table>
+        @endforeach</table>
         <!-- ページネーション -->
         {{-- {{ $list->links() }} --}}
         現在 {{ $list->currentPage() }} ページ目<br>
